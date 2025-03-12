@@ -1,0 +1,29 @@
+[INFO] Program started.
+[INFO] LinkedList created.
+[INFO] Inserting: 0
+[INFO] Inserting: 1
+[INFO] Inserting: 2
+[INFO] Inserting: 3
+[INFO] Inserting: 4
+[INFO] Destructor called.
+[INFO] Removing: 2
+[INFO] Destructor called.
+[INFO] Removing head: 0
+[INFO] Destructor called.
+[INFO] Removing: 4
+[INFO] Destructor called.
+[WARNING] Element not found: 10
+[INFO] Destructor called.
+[INFO] Copy Constructor called.
+[INFO] Destructor called.
+[INFO] Removing: 3
+[INFO] Destructor called.
+[INFO] Destructor called.
+[INFO] LinkedList created.
+[INFO] Destructor called.
+[WARNING] Attempted to remove from an empty list.
+[INFO] Destructor called.
+[INFO] LinkedList created.
+[INFO] Inserting: 100
+[INFO] Inserting: 200
+[INFO] Destructor called.
