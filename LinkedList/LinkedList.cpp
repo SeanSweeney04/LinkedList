@@ -24,10 +24,12 @@ LinkedList::LinkedList(Logger& logger) : logger(logger)
 
 // Copy constructor: Creates a deep copy of the given LinkedList
 
-LinkedList::LinkedList(const LinkedList& list, Logger& logger) : logger(logger) {
+LinkedList::LinkedList(const LinkedList& list, Logger& logger) : logger(logger) 
+{
     head = tail = nullptr;
     Node* temp = list.head;
-    while (temp) {
+    while (temp) 
+    {
         insert(temp->data);
         temp = temp->next;
     }
@@ -37,7 +39,8 @@ LinkedList::LinkedList(const LinkedList& list, Logger& logger) : logger(logger) 
 LinkedList::LinkedList(int arr[], int size, Logger& logger) : logger(logger)
 {
     head = tail = nullptr;
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < size; i++) 
+
         insert(arr[i]);
     }
     logger.log(LogLevel::INFO, "LinkedList created using parameterized constructor.");
@@ -47,7 +50,8 @@ LinkedList::LinkedList(int arr[], int size, Logger& logger) : logger(logger)
 
 LinkedList& LinkedList::operator=(const LinkedList& list)
 {
-    if (this == &list) {
+    if (this == &list) 
+    {
         return *this;  // Avoid self-assignment
     }
 
@@ -58,7 +62,8 @@ LinkedList& LinkedList::operator=(const LinkedList& list)
 
     // Copy from the given list
     Node* temp = list.head;
-    while (temp) {
+    while (temp) 
+    {
         insert(temp->data);
         temp = temp->next;
     }
@@ -80,7 +85,6 @@ void LinkedList::insert(int x)
 {
     logger.log(LogLevel::INFO, "Inserting: " + std::to_string(x));
     Node* temp = new Node(x);
-    // If the list is empty, set the new node as head
 
     if (head == nullptr)
     {
@@ -90,13 +94,11 @@ void LinkedList::insert(int x)
     else
     {
         Node* t = head;
-        // Traverse to the last node
-        while (t->next != nullptr)
+        while (t->getNext() != nullptr)  // ? Use getter instead of `t->next`
         {
-            t = t->next;
+            t = t->getNext();
         }
-        // Attach the new node at the end
-        t->next = temp;
+        t->setNext(temp);  // ? Use setter instead of `t->next = temp`
     }
 }
 
@@ -148,7 +150,8 @@ void LinkedList::remove(int x)
 void LinkedList::clear()
 {
     Node* cur = head;
-    while (cur) {
+    while (cur) 
+    {
         Node* next = cur->next;
         delete cur;
         cur = next;

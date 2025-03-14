@@ -12,7 +12,8 @@ int main()
     LinkedList l1(logger);
     LinkedListLogger l1Logger(l1);  // Create a LinkedListLogger instance
 
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 5; i++) 
+    {
         l1.insert(i);
     }
 

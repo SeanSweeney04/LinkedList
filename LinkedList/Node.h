@@ -5,6 +5,16 @@ class Node
 {
 public:
     Node(int x);
+
+   
+    int getData() const;
+    void setData(int x);
+
+    
+    Node* getNext() const;
+    void setNext(Node* nextNode);
+
+private:
     int data;
     Node* next;
 };

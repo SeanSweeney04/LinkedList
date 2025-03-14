@@ -1,27 +1,33 @@
 #include "Logger.h"
 
-Logger::Logger(const std::string& filename) : fileLoggingEnabled(false) {
-    if (!filename.empty()) {
+Logger::Logger(const std::string& filename) : fileLoggingEnabled(false) 
+{
+    if (!filename.empty()) 
+    {
         enableFileLogging(filename);
     }
 }
 
 //Destructor: Closes the log file
 
-Logger::~Logger() {
-    if (fileLoggingEnabled) {
+Logger::~Logger() 
+{
+    if (fileLoggingEnabled) 
+    {
         logFile.close();
     }
 }
 
 // Enables logging to a file
 
-void Logger::enableFileLogging(const std::string& filename) {
+void Logger::enableFileLogging(const std::string& filename) 
+
     logFile.open(filename, std::ios::app);
     if (logFile.is_open()) {
         fileLoggingEnabled = true;
     }
-    else {
+    else 
+    {
         std::cerr << "[ERROR] Unable to open log file: " << filename << std::endl;
     }
 }
