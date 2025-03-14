@@ -4,14 +4,15 @@
 #include "LinkedList.h"
 #include <iostream>
 
-class LinkedListLogger 
+class LinkedList;
+class LinkedListLogger
 {
 public:
-    explicit LinkedListLogger(LinkedList& list);  
-    void print(); 
+    LinkedListLogger(LinkedList& list);
+    void print();
 
 private:
-    LinkedList& list;  
+    LinkedList& list;
 };
 
 #endif

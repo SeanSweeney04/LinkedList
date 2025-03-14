@@ -5,25 +5,18 @@
 [INFO] Inserting: 2
 [INFO] Inserting: 3
 [INFO] Inserting: 4
-[INFO] Destructor called.
+[INFO] Removing 2 from l1...
 [INFO] Removing: 2
-[INFO] Destructor called.
+[INFO] Removing head (0) from l1...
 [INFO] Removing head: 0
-[INFO] Destructor called.
+[INFO] Removing tail (4) from l1...
 [INFO] Removing: 4
-[INFO] Destructor called.
+[INFO] Trying to remove a non-existent value (10)...
 [WARNING] Element not found: 10
-[INFO] Destructor called.
+[INFO] Copying l1 into l2...
+[INFO] Inserting: 1
+[INFO] Inserting: 3
 [INFO] Copy Constructor called.
+[INFO] Program ended.
 [INFO] Destructor called.
-[INFO] Removing: 3
-[INFO] Destructor called.
-[INFO] Destructor called.
-[INFO] LinkedList created.
-[INFO] Destructor called.
-[WARNING] Attempted to remove from an empty list.
-[INFO] Destructor called.
-[INFO] LinkedList created.
-[INFO] Inserting: 100
-[INFO] Inserting: 200
 [INFO] Destructor called.
