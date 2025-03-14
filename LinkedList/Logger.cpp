@@ -21,6 +21,7 @@ Logger::~Logger()
 // Enables logging to a file
 
 void Logger::enableFileLogging(const std::string& filename) 
+{
 
     logFile.open(filename, std::ios::app);
     if (logFile.is_open()) {

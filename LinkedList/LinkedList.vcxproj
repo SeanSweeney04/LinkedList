@@ -18,12 +18,25 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="LinkedListLogger.h" />
+    <ClInclude Include="Logger.h" />
+    <ClInclude Include="Node.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="LinkedListLogger.cpp" />
+    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{edfa8ef3-793c-497f-8a68-0780a31cc3a5}</ProjectGuid>
     <RootNamespace>LinkedList2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>LinkedList</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -126,18 +139,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="LinkedList.cpp" />
-    <ClCompile Include="LinkedListLogger.cpp" />
-    <ClCompile Include="Logger.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="LinkedListLogger.h" />
-    <ClInclude Include="Logger.h" />
-    <ClInclude Include="Node.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
