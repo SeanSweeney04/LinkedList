@@ -1,0 +1,22 @@
+[INFO] Program started.
+[INFO] LinkedList created.
+[INFO] Inserting: 0
+[INFO] Inserting: 1
+[INFO] Inserting: 2
+[INFO] Inserting: 3
+[INFO] Inserting: 4
+[INFO] Removing 2 from l1...
+[INFO] Removing: 2
+[INFO] Removing head (0) from l1...
+[INFO] Removing head: 0
+[INFO] Removing tail (4) from l1...
+[INFO] Removing: 4
+[INFO] Trying to remove a non-existent value (10)...
+[WARNING] Element not found: 10
+[INFO] Copying l1 into l2...
+[INFO] Inserting: 1
+[INFO] Inserting: 3
+[INFO] Copy Constructor called.
+[INFO] Program ended.
+[INFO] Destructor called.
+[INFO] Destructor called.
