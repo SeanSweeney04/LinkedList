@@ -8,7 +8,7 @@ class LinkedList;
 class LinkedListLogger
 {
 public:
-    LinkedListLogger(LinkedList& list);
+    explicit LinkedListLogger(LinkedList& list);
     void print();
 
 private:

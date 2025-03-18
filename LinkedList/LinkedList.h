@@ -18,13 +18,16 @@ public:
     void insert(int x);
     void remove(int x);
 
+    Node* getHead() const;
+    Node* getTail() const;
+
 private:
     Node* head = nullptr;
     Node* tail = nullptr;
 
     void clear();
     Logger& _logger;
-    friend class LinkedListLogger;
+    
 };
 
 #endif

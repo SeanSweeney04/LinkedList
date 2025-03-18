@@ -1,21 +1,32 @@
 #include <iostream>
+#include <cstddef> 
+
 #include "LinkedList.h"
 #include "Node.h"
 #include "Logger.h"
-#include <cstddef> 
 
 using namespace std;
 
 // Node class constructor: Initializes a node with given data and sets next to nullptr
-
 Node::Node(int x)
 {
     data = x;
     next = nullptr;
 }
 
-// Default constructor for LinkedList: Initializes head and tail as nullptr
+// Getter for head
+Node* LinkedList::getHead() const
+{
+    return head;
+}
 
+//Getter for tail
+Node* LinkedList::getTail() const
+{
+    return tail;
+}
+
+// Default constructor for LinkedList: Initializes head and tail as nullptr
 LinkedList::LinkedList(Logger& logger) : _logger(logger)
 {
     head = tail = nullptr;
@@ -23,7 +34,6 @@ LinkedList::LinkedList(Logger& logger) : _logger(logger)
 }
 
 // Copy constructor: Creates a deep copy of the given LinkedList
-
 LinkedList::LinkedList(const LinkedList& list, Logger& logger) : _logger(logger) 
 {
     head = tail = nullptr;
@@ -47,7 +57,6 @@ LinkedList::LinkedList(int arr[], int size, Logger& logger) : _logger(logger)
 }
 
 // Assignment Operator Overload
-
 LinkedList& LinkedList::operator=(const LinkedList& list)
 {
     if (this == &list) 
@@ -72,7 +81,6 @@ LinkedList& LinkedList::operator=(const LinkedList& list)
 }
 
 // Destructor: Deletes all nodes to free memory
-
 LinkedList::~LinkedList()
 {
     _logger.log(LogLevel::INFO, "Destructor called.");
@@ -80,18 +88,19 @@ LinkedList::~LinkedList()
 }
 
 // Function to insert a new node with value 'x' at the end of the list
-
 void LinkedList::insert(int x)
 {
     _logger.log(LogLevel::INFO, "Inserting: " + std::to_string(x));
     Node* temp = new Node(x);
-    if (head == NULL) {
+    if (head == NULL) 
+    {
         head = temp;
         return;
     }
     else {
         Node* t = head;
-        while (t->next != NULL) {
+        while (t->next != NULL) 
+        {
             t = t->next;
         }
         t->next = temp;
@@ -99,7 +108,6 @@ void LinkedList::insert(int x)
 }
 
 // Function to remove the first occurrence of node with value 'x'
-
 void LinkedList::remove(int x)
 {
     if (!head)
@@ -142,7 +150,6 @@ void LinkedList::remove(int x)
 }
 
 // Helper function to clear the list (used in destructor and operator=)
-
 void LinkedList::clear()
 {
     Node* cur = head;
