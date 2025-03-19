@@ -90,7 +90,7 @@ int main()
     cout << "-----------------------------------------\n";
 
     // ✅ Test 06: Passing by Reference (formerly passing by value)
-    logger.log(LogLevel::INFO, "Test 06: Passing LinkedList by REFERENCE.");
+    logger.log(LogLevel::INFO, "Test 06: Passing LinkedList by VLAUE.");
     std::cout << "\nTesting passing LinkedList by reference:\n";
     modifyListByValue(l1);
     std::cout << "Original l1 after modifyListByValue: ";
