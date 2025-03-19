@@ -16,7 +16,6 @@ public:
     void log(LogLevel level, const std::string& message);
     void enableFileLogging(const std::string& filename);
 
-
 private:
     std::ofstream logFile;
     bool fileLoggingEnabled;

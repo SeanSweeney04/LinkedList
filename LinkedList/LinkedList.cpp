@@ -20,7 +20,7 @@ Node* LinkedList::getHead() const
     return head;
 }
 
-//Getter for tail
+// Getter for tail
 Node* LinkedList::getTail() const
 {
     return tail;
@@ -43,6 +43,7 @@ LinkedList::LinkedList(const LinkedList& list, Logger& logger) : _logger(logger)
         insert(temp->data);
         temp = temp->next;
     }
+
     logger.log(LogLevel::INFO, "Copy Constructor called.");
 }
 
@@ -59,25 +60,24 @@ LinkedList::LinkedList(int arr[], int size, Logger& logger) : _logger(logger)
 // Assignment Operator Overload
 LinkedList& LinkedList::operator=(const LinkedList& list)
 {
-    if (this == &list) 
+    if (this != &list)
     {
-        return *this;  // Avoid self-assignment
+        _logger.log(LogLevel::INFO, "Assignment Operator called.");
+
+
+        // Clear existing list
+        clear();
+
+        // Copy from the given list
+        Node* temp = list.head;
+        while (temp)
+        {
+            insert(temp->data);
+            temp = temp->next;
+        }
+
+        return *this;
     }
-
-    _logger.log(LogLevel::INFO, "Assignment Operator called.");
-
-    // Clear existing list
-    clear();
-
-    // Copy from the given list
-    Node* temp = list.head;
-    while (temp) 
-    {
-        insert(temp->data);
-        temp = temp->next;
-    }
-
-    return *this;
 }
 
 // Destructor: Deletes all nodes to free memory
@@ -97,7 +97,8 @@ void LinkedList::insert(int x)
         head = temp;
         return;
     }
-    else {
+    else 
+    {
         Node* t = head;
         while (t->next != NULL) 
         {
@@ -141,7 +142,7 @@ void LinkedList::remove(int x)
                 tail = prev; // Update tail if needed
             }
             delete cur;
-            return;
+            break;
         }
         prev = cur;
         cur = cur->next;

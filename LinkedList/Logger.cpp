@@ -9,7 +9,6 @@ Logger::Logger(const std::string& filename) : fileLoggingEnabled(false)
 }
 
 //Destructor: Closes the log file
-
 Logger::~Logger() 
 {
     if (fileLoggingEnabled) 
@@ -19,12 +18,12 @@ Logger::~Logger()
 }
 
 // Enables logging to a file
-
 void Logger::enableFileLogging(const std::string& filename) 
 {
 
     logFile.open(filename, std::ios::app);
-    if (logFile.is_open()) {
+    if (logFile.is_open()) 
+    {
         fileLoggingEnabled = true;
     }
     else 
@@ -48,8 +47,11 @@ void Logger::log(LogLevel level, const std::string& message)
     case LogLevel::ERROR:
         logLevelStr = "[ERROR] ";
         break;
+    default:
+        logLevelStr = "[UNKNOWN] "; 
+        break;
     }
-
+    
     std::string fullMessage = logLevelStr + message;
 
     std::cout << fullMessage << std::endl;
