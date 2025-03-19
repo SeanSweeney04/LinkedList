@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <cstddef> 
 
 #include "LinkedList.h"
@@ -124,29 +124,31 @@ void LinkedList::remove(int x)
         Node* temp = head;
         head = head->next;
         delete temp;
-        return;
+        return;  // ✅ Exit after successful deletion
     }
 
     Node* prev = head;
     Node* cur = head->next;
 
-    // Traverse the list to find the node with value 'i'
+    // Traverse the list to find the node with value 'x'
     while (cur)
     {
         if (cur->data == x)
         {
             _logger.log(LogLevel::INFO, "Removing: " + std::to_string(x));
-            prev->next = cur->next; // Bypass the node
+            prev->next = cur->next; // ✅ Bypass the node
             if (cur == tail)
             {
-                tail = prev; // Update tail if needed
+                tail = prev; // ✅ Update tail if needed
             }
             delete cur;
-            break;
+            return;  // ✅ Exit after deletion to prevent "Element not found" log
         }
         prev = cur;
         cur = cur->next;
     }
+
+    // ✅ Now this will only execute if the element was NOT found
     _logger.log(LogLevel::WARNING, "Element not found: " + std::to_string(x));
 }
 
