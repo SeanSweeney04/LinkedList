@@ -1,13 +1,16 @@
 ﻿#include "LinkedList.h"
 #include "Node.h"
+#include "Logger.h"
 #include <iostream>
+
+extern Logger logger;
 
 LinkedList::LinkedList()
 {
     head = nullptr;
     tail = nullptr;
 
-    std::cout << "[DEBUG] LinkedList default constructor called." << std::endl;
+    logger.log(LogLevel::DEBUG, "LinkedList default constructor called.");
 }
 
 // ✅ Copy Constructor: Creates a deep copy of another LinkedList
@@ -21,7 +24,7 @@ LinkedList::LinkedList(const LinkedList& list)
         temp = temp->next;
     }
 
-    std::cout << "[DEBUG] LinkedList copy constructor called." << std::endl;
+    logger.log(LogLevel::DEBUG, "LinkedList copy constructor called.");
 }
 
 // ✅ Parameterized Constructor: Initializes LinkedList from an array
@@ -33,27 +36,25 @@ LinkedList::LinkedList(int arr[], int size)
         insert(arr[i]);
     }
 
-    std::cout << "[DEBUG] LinkedList parameterized constructor called." << std::endl;
+    logger.log(LogLevel::DEBUG, "LinkedList parameterized constructor called.");
 }
 
 // ✅ Assignment Operator Overload
 LinkedList& LinkedList::operator=(const LinkedList& list)
 {
-    if (this == &list)
+    if (this != &list)  // ✅ Standard self-assignment check
     {
-        return *this;  // Avoid self-assignment
+        clear();  // Free existing list
+
+        Node* temp = list.head;
+        while (temp)
+        {
+            insert(temp->data);
+            temp = temp->next;
+        }
+
+        logger.log(LogLevel::DEBUG, "LinkedList assignment operator called.");
     }
-
-    clear();  // Free existing list
-
-    Node* temp = list.head;
-    while (temp)
-    {
-        insert(temp->data);
-        temp = temp->next;
-    }
-
-    std::cout << "[DEBUG] LinkedList assignment operator called." << std::endl;
 
     return *this;
 }
@@ -63,7 +64,7 @@ LinkedList::~LinkedList()
 {
     clear();
 
-    std::cout << "[DEBUG] LinkedList destructor called." << std::endl;
+    logger.log(LogLevel::DEBUG, "LinkedList destructor called.");
 }
 
 // ✅ Insert a new node at the end of the list
@@ -86,13 +87,12 @@ void LinkedList::remove(int x)
 {
     if (!head)
     {
-        std::cerr << "Warning: Attempted to remove from an empty list." << std::endl;
+        logger.log(LogLevel::ERROR, "Attempting to remove from an empty list.");
         return;
     }
 
     if (head->data == x)
     {
-        std::cout << "Removing head: " << x << std::endl;
         Node* temp = head;
         head = head->next;
         delete temp;
@@ -111,7 +111,6 @@ void LinkedList::remove(int x)
     {
         if (cur->data == x)
         {
-            std::cout << "Removing: " << x << std::endl;
             prev->next = cur->next;
 
             if (cur == tail)
@@ -125,7 +124,7 @@ void LinkedList::remove(int x)
         cur = cur->next;
     }
 
-    std::cerr << "Warning: Element not found: " << x << std::endl;
+    logger.log(LogLevel::WARNING, "Element not found: " + std::to_string(x));
 }
 
 // ✅ Clears all nodes in the list

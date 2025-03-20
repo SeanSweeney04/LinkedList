@@ -47,6 +47,10 @@ void Logger::log(LogLevel level, const std::string& message)
 
     switch (level)
     {
+
+    case LogLevel::DEBUG:
+        logLevelStr = "[DEBUG] ";
+        break;
     case LogLevel::INFO:
         logLevelStr = "[INFO] ";
         break;

@@ -5,7 +5,7 @@
 #include <fstream>
 #include <string>
 
-enum LogLevel { INFO, WARNING, ERROR };
+enum LogLevel { INFO, WARNING, ERROR, DEBUG };
 
 class Logger
 {
