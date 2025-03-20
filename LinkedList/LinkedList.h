@@ -1,7 +1,6 @@
 ﻿#ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
-#include <cstddef> 
 #include "Node.h"
 #include <iostream>
 
@@ -15,7 +14,7 @@ public:
     ~LinkedList();
 
     void insert(int x);
-    void remove(int x, std::ostream& logStream);
+    void remove(int x);
     Node* getHead() const;
     Node* getTail() const;
 

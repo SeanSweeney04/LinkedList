@@ -1,11 +1,13 @@
 ﻿#include "LinkedList.h"
-#include <iostream>
 #include "Node.h"
+#include <iostream>
 
 LinkedList::LinkedList()
 {
     head = nullptr;
     tail = nullptr;
+
+    std::cout << "[DEBUG] LinkedList default constructor called." << std::endl;
 }
 
 // ✅ Copy Constructor: Creates a deep copy of another LinkedList
@@ -18,6 +20,8 @@ LinkedList::LinkedList(const LinkedList& list)
         insert(temp->data);
         temp = temp->next;
     }
+
+    std::cout << "[DEBUG] LinkedList copy constructor called." << std::endl;
 }
 
 // ✅ Parameterized Constructor: Initializes LinkedList from an array
@@ -28,6 +32,8 @@ LinkedList::LinkedList(int arr[], int size)
     {
         insert(arr[i]);
     }
+
+    std::cout << "[DEBUG] LinkedList parameterized constructor called." << std::endl;
 }
 
 // ✅ Assignment Operator Overload
@@ -47,6 +53,8 @@ LinkedList& LinkedList::operator=(const LinkedList& list)
         temp = temp->next;
     }
 
+    std::cout << "[DEBUG] LinkedList assignment operator called." << std::endl;
+
     return *this;
 }
 
@@ -54,6 +62,8 @@ LinkedList& LinkedList::operator=(const LinkedList& list)
 LinkedList::~LinkedList()
 {
     clear();
+
+    std::cout << "[DEBUG] LinkedList destructor called." << std::endl;
 }
 
 // ✅ Insert a new node at the end of the list
@@ -72,17 +82,17 @@ void LinkedList::insert(int x)
 }
 
 // ✅ Remove a node with value `x`, logs output via parameter
-void LinkedList::remove(int x, std::ostream& logStream)
+void LinkedList::remove(int x)
 {
     if (!head)
     {
-        logStream << "Warning: Attempted to remove from an empty list." << std::endl;
+        std::cerr << "Warning: Attempted to remove from an empty list." << std::endl;
         return;
     }
 
     if (head->data == x)
     {
-        logStream << "Removing head: " << x << std::endl;
+        std::cout << "Removing head: " << x << std::endl;
         Node* temp = head;
         head = head->next;
         delete temp;
@@ -101,7 +111,7 @@ void LinkedList::remove(int x, std::ostream& logStream)
     {
         if (cur->data == x)
         {
-            logStream << "Removing: " << x << std::endl;
+            std::cout << "Removing: " << x << std::endl;
             prev->next = cur->next;
 
             if (cur == tail)
@@ -115,7 +125,7 @@ void LinkedList::remove(int x, std::ostream& logStream)
         cur = cur->next;
     }
 
-    logStream << "Warning: Element not found: " << x << std::endl;
+    std::cerr << "Warning: Element not found: " << x << std::endl;
 }
 
 // ✅ Clears all nodes in the list

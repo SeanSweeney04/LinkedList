@@ -1,11 +1,7 @@
 [INFO] TEST SUITE STARTED
 [INFO] Test 01: Creating and inserting elements into l1.
 [INFO] Test 02: Removing elements from l1.
-Removing: 2
-Removing head: 0
-Removing: 4
 [INFO] Test 03: Trying to remove a non-existent value (10).
-Warning: Element not found: 10
 [INFO] Test 04: Copying l1 into l2 (Copy Constructor).
 [INFO] Test 05: Assigning l1 to l3 (Assignment Operator).
 [INFO] Test 06: Passing LinkedList by VALUE.
