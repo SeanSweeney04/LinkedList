@@ -1,10 +1,19 @@
-#include "Logger.h"
+﻿#include "Logger.h"
 
 Logger::Logger(const std::string& filename) : fileLoggingEnabled(false) 
 {
-    if (!filename.empty()) 
+    if (!filename.empty())
     {
-        enableFileLogging(filename);
+        // ✅ Open in trunc mode to wipe out previous logs
+        logFile.open(filename, std::ios::trunc);
+        if (logFile.is_open())
+        {
+            fileLoggingEnabled = true;
+        }
+        else
+        {
+            std::cerr << "[ERROR] Unable to open log file: " << filename << std::endl;
+        }
     }
 }
 
@@ -60,4 +69,9 @@ void Logger::log(LogLevel level, const std::string& message)
     {
         logFile << fullMessage << std::endl;
     }
+}
+
+std::ofstream& Logger::getLogFile()
+{
+    return logFile;
 }

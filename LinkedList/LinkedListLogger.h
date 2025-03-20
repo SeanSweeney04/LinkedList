@@ -4,7 +4,6 @@
 #include "LinkedList.h"
 #include <iostream>
 
-class LinkedList;
 class LinkedListLogger
 {
 public:
@@ -12,7 +11,7 @@ public:
     void print();
 
 private:
-    LinkedList& list;
+    LinkedList* list;
 };
 
 #endif

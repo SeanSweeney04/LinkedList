@@ -1,33 +1,28 @@
-#ifndef LINKEDLIST_H
+﻿#ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 
 #include <cstddef> 
 #include "Node.h"
-#include "Logger.h"
-#include "LinkedListLogger.h"
+#include <iostream>
 
 class LinkedList
 {
 public:
-    LinkedList(Logger& logger);
-    LinkedList(const LinkedList& list, Logger& logger);
-    LinkedList(int arr[], int size, Logger& logger);
+    LinkedList();
+    LinkedList(const LinkedList& list);
+    LinkedList(int arr[], int size);
     LinkedList& operator=(const LinkedList& list);
     ~LinkedList();
 
     void insert(int x);
-    void remove(int x);
-
+    void remove(int x, std::ostream& logStream);
     Node* getHead() const;
     Node* getTail() const;
 
 private:
     Node* head = nullptr;
     Node* tail = nullptr;
-
     void clear();
-    Logger& _logger;
-    
 };
 
 #endif

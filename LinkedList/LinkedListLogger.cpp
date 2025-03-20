@@ -1,12 +1,27 @@
-#include "LinkedListLogger.h"
+﻿#include "LinkedListLogger.h"
+#include <iostream>
 
-// Constructor stores reference to LinkedList
-LinkedListLogger::LinkedListLogger(LinkedList& list) : list(list) {}
+LinkedListLogger::LinkedListLogger(LinkedList& list)
+{
+    this->list = &list;  // ✅ Store a pointer instead of a reference
+}
 
-// Instance-based print method (no static keyword)
 void LinkedListLogger::print()
 {
-    Node* temp = list.getHead();  // Access head directly (LinkedList is a friend class)
+    if (list == nullptr)
+    {
+        std::cout << "Error: LinkedListLogger is referencing a null LinkedList." << std::endl;
+        return;
+    }
+
+    Node* temp = list->getHead();
+
+    if (temp == nullptr)
+    {
+        std::cout << "List is empty." << std::endl;
+        return;
+    }
+
     while (temp != nullptr)
     {
         std::cout << temp->data << " ";

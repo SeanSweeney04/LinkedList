@@ -1,166 +1,144 @@
-﻿#include <iostream>
-#include <cstddef> 
-
-#include "LinkedList.h"
+﻿#include "LinkedList.h"
+#include <iostream>
 #include "Node.h"
-#include "Logger.h"
 
-using namespace std;
-
-// Node class constructor: Initializes a node with given data and sets next to nullptr
-Node::Node(int x)
+LinkedList::LinkedList()
 {
-    data = x;
-    next = nullptr;
+    head = nullptr;
+    tail = nullptr;
 }
 
-// Getter for head
-Node* LinkedList::getHead() const
-{
-    return head;
-}
-
-// Getter for tail
-Node* LinkedList::getTail() const
-{
-    return tail;
-}
-
-// Default constructor for LinkedList: Initializes head and tail as nullptr
-LinkedList::LinkedList(Logger& logger) : _logger(logger)
-{
-    head = tail = nullptr;
-    logger.log(LogLevel::INFO, "LinkedList created.");
-}
-
-// Copy constructor: Creates a deep copy of the given LinkedList
-LinkedList::LinkedList(const LinkedList& list, Logger& logger) : _logger(logger) 
+// ✅ Copy Constructor: Creates a deep copy of another LinkedList
+LinkedList::LinkedList(const LinkedList& list)
 {
     head = tail = nullptr;
     Node* temp = list.head;
-    while (temp) 
+    while (temp)
+    {
+        insert(temp->data);
+        temp = temp->next;
+    }
+}
+
+// ✅ Parameterized Constructor: Initializes LinkedList from an array
+LinkedList::LinkedList(int arr[], int size)
+{
+    head = tail = nullptr;
+    for (int i = 0; i < size; i++)
+    {
+        insert(arr[i]);
+    }
+}
+
+// ✅ Assignment Operator Overload
+LinkedList& LinkedList::operator=(const LinkedList& list)
+{
+    if (this == &list)
+    {
+        return *this;  // Avoid self-assignment
+    }
+
+    clear();  // Free existing list
+
+    Node* temp = list.head;
+    while (temp)
     {
         insert(temp->data);
         temp = temp->next;
     }
 
-    logger.log(LogLevel::INFO, "Copy Constructor called.");
+    return *this;
 }
 
-LinkedList::LinkedList(int arr[], int size, Logger& logger) : _logger(logger)
-{
-    head = tail = nullptr;
-    for (int i = 0; i < size; i++) 
-    {
-        insert(arr[i]);
-    }
-    logger.log(LogLevel::INFO, "LinkedList created using parameterized constructor.");
-}
-
-// Assignment Operator Overload
-LinkedList& LinkedList::operator=(const LinkedList& list)
-{
-    if (this != &list)
-    {
-        _logger.log(LogLevel::INFO, "Assignment Operator called.");
-
-
-        // Clear existing list
-        clear();
-
-        // Copy from the given list
-        Node* temp = list.head;
-        while (temp)
-        {
-            insert(temp->data);
-            temp = temp->next;
-        }
-
-        return *this;
-    }
-}
-
-// Destructor: Deletes all nodes to free memory
+// ✅ Destructor: Clears all nodes
 LinkedList::~LinkedList()
 {
-    _logger.log(LogLevel::INFO, "Destructor called.");
     clear();
 }
 
-// Function to insert a new node with value 'x' at the end of the list
+// ✅ Insert a new node at the end of the list
 void LinkedList::insert(int x)
 {
-    _logger.log(LogLevel::INFO, "Inserting: " + std::to_string(x));
     Node* temp = new Node(x);
-    if (head == NULL) 
+    if (head == nullptr)
     {
-        head = temp;
-        return;
+        head = tail = temp;
     }
-    else 
+    else
     {
-        Node* t = head;
-        while (t->next != NULL) 
-        {
-            t = t->next;
-        }
-        t->next = temp;
+        tail->next = temp;
+        tail = temp;
     }
 }
 
-// Function to remove the first occurrence of node with value 'x'
-void LinkedList::remove(int x)
+// ✅ Remove a node with value `x`, logs output via parameter
+void LinkedList::remove(int x, std::ostream& logStream)
 {
     if (!head)
     {
-        _logger.log(LogLevel::WARNING, "Attempted to remove from an empty list.");
+        logStream << "Warning: Attempted to remove from an empty list." << std::endl;
         return;
     }
 
-    // If the node to be deleted is the head
     if (head->data == x)
     {
-        _logger.log(LogLevel::INFO, "Removing head: " + std::to_string(x));
+        logStream << "Removing head: " << x << std::endl;
         Node* temp = head;
         head = head->next;
         delete temp;
-        return;  // ✅ Exit after successful deletion
+
+        if (!head)
+        {
+            tail = nullptr;
+        }
+        return;
     }
 
     Node* prev = head;
     Node* cur = head->next;
 
-    // Traverse the list to find the node with value 'x'
     while (cur)
     {
         if (cur->data == x)
         {
-            _logger.log(LogLevel::INFO, "Removing: " + std::to_string(x));
-            prev->next = cur->next; // ✅ Bypass the node
+            logStream << "Removing: " << x << std::endl;
+            prev->next = cur->next;
+
             if (cur == tail)
             {
-                tail = prev; // ✅ Update tail if needed
+                tail = prev;
             }
             delete cur;
-            return;  // ✅ Exit after deletion to prevent "Element not found" log
+            return;
         }
         prev = cur;
         cur = cur->next;
     }
 
-    // ✅ Now this will only execute if the element was NOT found
-    _logger.log(LogLevel::WARNING, "Element not found: " + std::to_string(x));
+    logStream << "Warning: Element not found: " << x << std::endl;
 }
 
-// Helper function to clear the list (used in destructor and operator=)
+// ✅ Clears all nodes in the list
 void LinkedList::clear()
 {
     Node* cur = head;
-    while (cur) 
+    while (cur)
     {
         Node* next = cur->next;
         delete cur;
         cur = next;
     }
     head = tail = nullptr;
-};
+}
+
+// ✅ Getter for head
+Node* LinkedList::getHead() const
+{
+    return head;
+}
+
+// ✅ Getter for tail
+Node* LinkedList::getTail() const
+{
+    return tail;
+}
