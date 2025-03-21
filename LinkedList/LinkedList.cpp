@@ -3,17 +3,15 @@
 #include "Logger.h"
 #include <iostream>
 
-extern Logger logger;
-
 LinkedList::LinkedList()
 {
     head = nullptr;
     tail = nullptr;
 
-    logger.log(LogLevel::DEBUG, "LinkedList default constructor called.");
+    Logger::getLog().log(LogLevel::DEBUG, "LinkedList default constructor called.");
 }
 
-// ✅ Copy Constructor: Creates a deep copy of another LinkedList
+// Copy Constructor: Creates a deep copy of another LinkedList
 LinkedList::LinkedList(const LinkedList& list)
 {
     head = tail = nullptr;
@@ -24,10 +22,10 @@ LinkedList::LinkedList(const LinkedList& list)
         temp = temp->next;
     }
 
-    logger.log(LogLevel::DEBUG, "LinkedList copy constructor called.");
+    Logger::getLog().log(LogLevel::DEBUG, "LinkedList copy constructor called.");
 }
 
-// ✅ Parameterized Constructor: Initializes LinkedList from an array
+// Parameterized Constructor: Initializes LinkedList from an array
 LinkedList::LinkedList(int arr[], int size)
 {
     head = tail = nullptr;
@@ -36,13 +34,13 @@ LinkedList::LinkedList(int arr[], int size)
         insert(arr[i]);
     }
 
-    logger.log(LogLevel::DEBUG, "LinkedList parameterized constructor called.");
+    Logger::getLog().log(LogLevel::DEBUG, "LinkedList parameterized constructor called.");
 }
 
-// ✅ Assignment Operator Overload
+// Assignment Operator Overload
 LinkedList& LinkedList::operator=(const LinkedList& list)
 {
-    if (this != &list)  // ✅ Standard self-assignment check
+    if (this != &list)  // Standard self-assignment check
     {
         clear();  // Free existing list
 
@@ -53,21 +51,21 @@ LinkedList& LinkedList::operator=(const LinkedList& list)
             temp = temp->next;
         }
 
-        logger.log(LogLevel::DEBUG, "LinkedList assignment operator called.");
+        Logger::getLog().log(LogLevel::DEBUG, "LinkedList assignment operator called.");
     }
 
     return *this;
 }
 
-// ✅ Destructor: Clears all nodes
+// Destructor: Clears all nodes
 LinkedList::~LinkedList()
 {
     clear();
 
-    logger.log(LogLevel::DEBUG, "LinkedList destructor called.");
+    Logger::getLog().log(LogLevel::DEBUG, "LinkedList destructor called.");
 }
 
-// ✅ Insert a new node at the end of the list
+// Insert a new node at the end of the list
 void LinkedList::insert(int x)
 {
     Node* temp = new Node(x);
@@ -82,12 +80,12 @@ void LinkedList::insert(int x)
     }
 }
 
-// ✅ Remove a node with value `x`, logs output via parameter
+// Remove a node with value `x`, logs output via parameter
 void LinkedList::remove(int x)
 {
     if (!head)
     {
-        logger.log(LogLevel::ERROR, "Attempting to remove from an empty list.");
+        Logger::getLog().log(LogLevel::ERROR, "Attempting to remove from an empty list.");
         return;
     }
 
@@ -124,10 +122,10 @@ void LinkedList::remove(int x)
         cur = cur->next;
     }
 
-    logger.log(LogLevel::WARNING, "Element not found: " + std::to_string(x));
+    Logger::getLog().log(LogLevel::WARNING, "Element not found: " + std::to_string(x));
 }
 
-// ✅ Clears all nodes in the list
+// Clears all nodes in the list
 void LinkedList::clear()
 {
     Node* cur = head;
@@ -140,13 +138,13 @@ void LinkedList::clear()
     head = tail = nullptr;
 }
 
-// ✅ Getter for head
+// Getter for head
 Node* LinkedList::getHead() const
 {
     return head;
 }
 
-// ✅ Getter for tail
+// Getter for tail
 Node* LinkedList::getTail() const
 {
     return tail;

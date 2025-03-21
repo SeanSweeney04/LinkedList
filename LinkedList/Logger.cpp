@@ -1,10 +1,16 @@
 ﻿#include "Logger.h"
 
+Logger& Logger::getLog()
+{
+    static Logger instance; 
+    return instance;
+}
+
 Logger::Logger(const std::string& filename) : fileLoggingEnabled(false) 
 {
     if (!filename.empty())
     {
-        // ✅ Open in trunc mode to wipe out previous logs
+        //Open in trunc mode to wipe out previous logs
         logFile.open(filename, std::ios::trunc);
         if (logFile.is_open())
         {
@@ -72,10 +78,25 @@ void Logger::log(LogLevel level, const std::string& message)
     if (fileLoggingEnabled && logFile.is_open())
     {
         logFile << fullMessage << std::endl;
+        logFile.flush();
     }
 }
 
 std::ofstream& Logger::getLogFile()
 {
     return logFile;
+}
+
+void Logger::initialize(const std::string& filename)
+{
+    if (!fileLoggingEnabled)
+    {
+        logFile.open(filename, std::ios::trunc);
+        fileLoggingEnabled = logFile.is_open();
+
+        if (!fileLoggingEnabled)
+        {
+            std::cerr << "[ERROR] Failed to open log file: " << filename << std::endl;
+        }
+    }
 }

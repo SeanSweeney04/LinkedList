@@ -10,6 +10,8 @@ enum LogLevel { INFO, WARNING, ERROR, DEBUG };
 class Logger
 {
 public:
+    static Logger& getLog();
+    void initialize(const std::string& filename);
     explicit Logger(const std::string& filename = "");
     ~Logger();
 

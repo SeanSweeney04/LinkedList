@@ -7,11 +7,11 @@
 class LinkedListLogger
 {
 public:
-    explicit LinkedListLogger(LinkedList& list);
-    void print();
+    explicit LinkedListLogger(const LinkedList& list);
+    std::string toString() const;
 
 private:
-    LinkedList* list;
+    const LinkedList* list;
 };
 
 #endif

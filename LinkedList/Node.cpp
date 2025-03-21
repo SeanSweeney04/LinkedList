@@ -1,6 +1,6 @@
 ﻿#include "Node.h"
 
-// ✅ Constructor definition
+// Constructor definition
 Node::Node(int x)
 {
     data = x;

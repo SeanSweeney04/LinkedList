@@ -2,35 +2,27 @@
 #include "Logger.h"
 #include <iostream>
 
-extern Logger logger;
 
-LinkedListLogger::LinkedListLogger(LinkedList& list)
+LinkedListLogger::LinkedListLogger(const LinkedList& list)
 {
-    this->list = &list;  // ✅ Store a pointer instead of a reference
+    this->list = &list;  // Store a pointer instead of a reference
 }
 
-void LinkedListLogger::print()
+std::string LinkedListLogger::toString() const
 {
-    if (list == nullptr)
-    {
-        logger.log(LogLevel::ERROR, "Error: LinkedListLogger is referencing a null LinkedList.");
-        return;
-    }
+    if (!list)
+        return "[ERROR] LinkedListLogger is referencing a null LinkedList.";
 
     Node* temp = list->getHead();
+    if (!temp)
+        return "List is empty.";
 
-    if (temp == nullptr)
+    std::string output = "List contents: ";
+    while (temp)
     {
-        logger.log(LogLevel::INFO, "List is empty.");
-        return;
-    }
-
-    std::string logMessage = "List contents: ";
-    while (temp != nullptr)
-    {
-        logMessage += std::to_string(temp->data) + " ";
+        output += std::to_string(temp->data) + " ";
         temp = temp->next;
     }
 
-    logger.log(LogLevel::INFO, logMessage);
+    return output;
 }
