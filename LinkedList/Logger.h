@@ -10,19 +10,14 @@ enum LogLevel { INFO, WARNING, ERROR, DEBUG };
 class Logger
 {
 public:
-    static Logger& getLog();
-    void initialize(const std::string& filename);
-    explicit Logger(const std::string& filename = "");
-    ~Logger();
-
-    void log(LogLevel level, const std::string& message);
-    void enableFileLogging(const std::string& filename);
-
-    std::ofstream& getLogFile();
+    static void initialize(const std::string& filename);
+    static void log(LogLevel level, const std::string& message);
+    static void shutdown();  
 
 private:
-    std::ofstream logFile;
-    bool fileLoggingEnabled;
+    static std::ofstream logFile;
+    static bool fileLoggingEnabled;
 };
+
 
 #endif

@@ -7,8 +7,6 @@ LinkedList::LinkedList()
 {
     head = nullptr;
     tail = nullptr;
-
-    Logger::getLog().log(LogLevel::DEBUG, "LinkedList default constructor called.");
 }
 
 // Copy Constructor: Creates a deep copy of another LinkedList
@@ -21,8 +19,6 @@ LinkedList::LinkedList(const LinkedList& list)
         insert(temp->data);
         temp = temp->next;
     }
-
-    Logger::getLog().log(LogLevel::DEBUG, "LinkedList copy constructor called.");
 }
 
 // Parameterized Constructor: Initializes LinkedList from an array
@@ -33,8 +29,6 @@ LinkedList::LinkedList(int arr[], int size)
     {
         insert(arr[i]);
     }
-
-    Logger::getLog().log(LogLevel::DEBUG, "LinkedList parameterized constructor called.");
 }
 
 // Assignment Operator Overload
@@ -50,8 +44,6 @@ LinkedList& LinkedList::operator=(const LinkedList& list)
             insert(temp->data);
             temp = temp->next;
         }
-
-        Logger::getLog().log(LogLevel::DEBUG, "LinkedList assignment operator called.");
     }
 
     return *this;
@@ -61,8 +53,6 @@ LinkedList& LinkedList::operator=(const LinkedList& list)
 LinkedList::~LinkedList()
 {
     clear();
-
-    Logger::getLog().log(LogLevel::DEBUG, "LinkedList destructor called.");
 }
 
 // Insert a new node at the end of the list
@@ -85,7 +75,6 @@ void LinkedList::remove(int x)
 {
     if (!head)
     {
-        Logger::getLog().log(LogLevel::ERROR, "Attempting to remove from an empty list.");
         return;
     }
 
@@ -121,8 +110,6 @@ void LinkedList::remove(int x)
         prev = cur;
         cur = cur->next;
     }
-
-    Logger::getLog().log(LogLevel::WARNING, "Element not found: " + std::to_string(x));
 }
 
 // Clears all nodes in the list

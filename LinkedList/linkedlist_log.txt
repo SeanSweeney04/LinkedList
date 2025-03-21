@@ -2,6 +2,7 @@
 [INFO] TEST SUITE STARTED
 [INFO] =========================================
 [INFO] Test 01: Creating and inserting elements into l1.
+[INFO] LinkedList default constructor called.
 [INFO] Original List (l1): List contents: 0 1 2 3 4 
 [INFO] -----------------------------------------
 [INFO] Test 02: Removing elements from l1.

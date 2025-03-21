@@ -11,17 +11,6 @@ Temp::Temp()
     delete heapList;
 }
 
-Temp::~Temp()
-{
-    Logger::getLog().log(LogLevel::DEBUG, "Temp destructor called.");
-}
-
-Temp::Temp(const Temp& other)
-    : lists(other.lists)
-{
-    Logger::getLog().log(LogLevel::DEBUG, "Temp copy constructor called.");
-}
-
 Temp& Temp::operator=(const Temp& other)
 {
     if (this != &other)

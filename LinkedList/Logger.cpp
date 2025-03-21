@@ -1,76 +1,42 @@
 ﻿#include "Logger.h"
 
-Logger& Logger::getLog()
-{
-    static Logger instance; 
-    return instance;
-}
+// Define static members
+std::ofstream Logger::logFile;
+bool Logger::fileLoggingEnabled = false;
 
-Logger::Logger(const std::string& filename) : fileLoggingEnabled(false) 
+void Logger::initialize(const std::string& filename)
 {
-    if (!filename.empty())
-    {
-        //Open in trunc mode to wipe out previous logs
-        logFile.open(filename, std::ios::trunc);
-        if (logFile.is_open())
-        {
-            fileLoggingEnabled = true;
-        }
-        else
-        {
-            std::cerr << "[ERROR] Unable to open log file: " << filename << std::endl;
-        }
-    }
-}
+    logFile.open(filename, std::ios::trunc);  // Overwrite on each run
+    fileLoggingEnabled = logFile.is_open();
 
-//Destructor: Closes the log file
-Logger::~Logger() 
-{
-    if (fileLoggingEnabled) 
+    if (!fileLoggingEnabled)
     {
-        logFile.close();
-    }
-}
-
-// Enables logging to a file
-void Logger::enableFileLogging(const std::string& filename) 
-{
-
-    logFile.open(filename, std::ios::app);
-    if (logFile.is_open()) 
-    {
-        fileLoggingEnabled = true;
-    }
-    else 
-    {
-        std::cerr << "[ERROR] Unable to open log file: " << filename << std::endl;
+        std::cerr << "[ERROR] Could not open log file: " << filename << std::endl;
     }
 }
 
 void Logger::log(LogLevel level, const std::string& message)
 {
     std::string logLevelStr;
-
     switch (level)
     {
-
-    case LogLevel::DEBUG:
-        logLevelStr = "[DEBUG] ";
+    case DEBUG:   
+        logLevelStr = "[DEBUG] "; 
         break;
-    case LogLevel::INFO:
-        logLevelStr = "[INFO] ";
+    case INFO:
+        logLevelStr = "[INFO] "; 
         break;
-    case LogLevel::WARNING:
-        logLevelStr = "[WARNING] ";
+    case WARNING: 
+        logLevelStr = "[WARNING] "; 
         break;
-    case LogLevel::ERROR:
-        logLevelStr = "[ERROR] ";
+    case ERROR:   
+        logLevelStr = "[ERROR] "; 
         break;
-    default:
+    default:      
         logLevelStr = "[UNKNOWN] "; 
         break;
     }
-    
+
     std::string fullMessage = logLevelStr + message;
 
     std::cout << fullMessage << std::endl;
@@ -82,21 +48,11 @@ void Logger::log(LogLevel level, const std::string& message)
     }
 }
 
-std::ofstream& Logger::getLogFile()
+void Logger::shutdown()
 {
-    return logFile;
-}
-
-void Logger::initialize(const std::string& filename)
-{
-    if (!fileLoggingEnabled)
+    if (fileLoggingEnabled && logFile.is_open())
     {
-        logFile.open(filename, std::ios::trunc);
-        fileLoggingEnabled = logFile.is_open();
-
-        if (!fileLoggingEnabled)
-        {
-            std::cerr << "[ERROR] Failed to open log file: " << filename << std::endl;
-        }
+        logFile.close();
+        fileLoggingEnabled = false;
     }
 }
