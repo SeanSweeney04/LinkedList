@@ -39,7 +39,6 @@ int main()
     Logger::log(INFO, "=========================================");
     Logger::log(INFO, "Test 01: Creating and inserting elements into l1.");
     LinkedList l1;
-    Logger::log(INFO, "LinkedList default constructor called.");
     LinkedListLogger l1Logger(l1);
 
     for (int i = 0; i < 5; i++)
@@ -72,7 +71,6 @@ int main()
 
     Logger::log(INFO, "Test 04: Copying l1 into l2 (Copy Constructor).");
     LinkedList l2(l1);
-    Logger::log(INFO, "LinkedList copy constructor called.");
     LinkedListLogger l2Logger(l2);
     Logger::log(INFO, l1Logger.toString());
     Logger::log(INFO, "-----------------------------------------");
@@ -80,7 +78,6 @@ int main()
     Logger::log(INFO, "Test 05: Assigning l1 to l3 (Assignment Operator).");
     LinkedList l3;
     l3 = l1;
-    Logger::log(INFO, "LinkedList assignment operator constructor called.");
     LinkedListLogger l3Logger(l3);
     Logger::log(INFO, l1Logger.toString());
     Logger::log(INFO, "-----------------------------------------");
@@ -121,7 +118,7 @@ int main()
     Logger::log(INFO, l1Logger.toString());
     Logger::log(INFO, "-----------------------------------------");
 
-    Logger::log(INFO, "================== Temp Test ==================");
+    Logger::log(INFO, "Test 09: Passing Temp instance by value and reference");
 
     Temp t1;  // default constructor
     Temp t2 = t1;

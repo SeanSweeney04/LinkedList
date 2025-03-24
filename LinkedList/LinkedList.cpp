@@ -7,6 +7,7 @@ LinkedList::LinkedList()
 {
     head = nullptr;
     tail = nullptr;
+    Logger::log(INFO, "LinkedList default constructor called.");
 }
 
 // Copy Constructor: Creates a deep copy of another LinkedList
@@ -19,6 +20,8 @@ LinkedList::LinkedList(const LinkedList& list)
         insert(temp->data);
         temp = temp->next;
     }
+
+    Logger::log(INFO, "LinkedList copy constructor called.");
 }
 
 // Parameterized Constructor: Initializes LinkedList from an array
@@ -29,6 +32,8 @@ LinkedList::LinkedList(int arr[], int size)
     {
         insert(arr[i]);
     }
+
+    Logger::log(INFO, "LinkedList parametrized constructor called.");
 }
 
 // Assignment Operator Overload
@@ -46,6 +51,8 @@ LinkedList& LinkedList::operator=(const LinkedList& list)
         }
     }
 
+    Logger::log(INFO, "LinkedList operator constructor called.");
+
     return *this;
 }
 
@@ -53,6 +60,7 @@ LinkedList& LinkedList::operator=(const LinkedList& list)
 LinkedList::~LinkedList()
 {
     clear();
+    Logger::log(INFO, "LinkedList destructor called.");
 }
 
 // Insert a new node at the end of the list
