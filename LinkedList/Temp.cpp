@@ -1,14 +1,27 @@
 #include "Temp.h"
 #include "Logger.h"
+#include "LinkedListLogger.h"
 
 Temp::Temp()
 {
-    lists.emplace_back();  // Stack
-    lists.emplace_back();  // Another stack
+    for (int i = 0; i < 3; ++i)
+    {
+        LinkedList list;
+        list.insert(i + 1);
 
-    LinkedList* heapList = new LinkedList();
-    lists.push_back(std::move(*heapList));  // Move into vector
-    delete heapList;
+        lists.push_back(list); 
+    }
+}
+
+Temp::Temp(const Temp& other)
+{
+    lists = std::vector<LinkedList>(); 
+    for (const auto& list : other.lists)
+    {
+        LinkedList copy = list;        
+        lists.push_back(copy);
+    }
+    Logger::log(DEBUG, "Temp copy constructor called.");
 }
 
 Temp& Temp::operator=(const Temp& other)

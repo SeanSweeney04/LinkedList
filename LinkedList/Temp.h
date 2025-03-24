@@ -8,7 +8,6 @@ class Temp
 {
 public:
     Temp();
-    ~Temp();
     Temp(const Temp& other);
     Temp& operator=(const Temp& other);
 

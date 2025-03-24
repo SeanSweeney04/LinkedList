@@ -6,6 +6,31 @@
 
 using namespace std;
 
+Temp passTemp(Temp temp_val, Temp& temp_ref)
+{
+    Logger::log(DEBUG, "Inside passTemp()");
+
+    // optional: modify them, or log contents
+    Logger::log(INFO, "Inside passTemp - logging temp_val:");
+    for (const auto& list : temp_val.getLists())
+    {
+        LinkedListLogger logger(list);
+        Logger::log(INFO, logger.toString());
+    }
+
+    Logger::log(INFO, "Inside passTemp - logging temp_ref:");
+    for (const auto& list : temp_ref.getLists())
+    {
+        LinkedListLogger logger(list);
+        Logger::log(INFO, logger.toString());
+    }
+
+    Logger::log(DEBUG, "Leaving passTemp() with a return by value");
+
+    return temp_val;
+
+}
+
 int main()
 {
     Logger::initialize("linkedlist_log.txt");
@@ -47,6 +72,7 @@ int main()
 
     Logger::log(INFO, "Test 04: Copying l1 into l2 (Copy Constructor).");
     LinkedList l2(l1);
+    Logger::log(INFO, "LinkedList copy constructor called.");
     LinkedListLogger l2Logger(l2);
     Logger::log(INFO, l1Logger.toString());
     Logger::log(INFO, "-----------------------------------------");
@@ -54,6 +80,7 @@ int main()
     Logger::log(INFO, "Test 05: Assigning l1 to l3 (Assignment Operator).");
     LinkedList l3;
     l3 = l1;
+    Logger::log(INFO, "LinkedList assignment operator constructor called.");
     LinkedListLogger l3Logger(l3);
     Logger::log(INFO, l1Logger.toString());
     Logger::log(INFO, "-----------------------------------------");
@@ -96,23 +123,11 @@ int main()
 
     Logger::log(INFO, "================== Temp Test ==================");
 
-    Temp temp;
-    Logger::log(INFO, "Filling LinkedLists inside Temp with test data...");
-    int value = 1;
-    for (auto& list : temp.getLists())
-    {
-        list.insert(value++);
-        list.insert(value++);
-    }
+    Temp t1;  // default constructor
+    Temp t2 = t1;
 
-    Logger::log(INFO, "Logging contents of all lists in Temp:");
-    int index = 1;
-    for (const auto& list : temp.getLists())
-    {
-        Logger::log(INFO, "List #" + std::to_string(index++));
-        LinkedListLogger listLogger(list);
-        Logger::log(INFO, listLogger.toString());
-    }
+    Temp t3 = passTemp(t1, t2);
+    Logger::log(INFO, "-----------------------------------------");
 
     Logger::log(INFO, "=========================================");
     Logger::log(INFO, "TEST SUITE ENDED");

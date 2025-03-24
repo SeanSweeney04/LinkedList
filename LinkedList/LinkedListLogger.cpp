@@ -10,12 +10,16 @@ LinkedListLogger::LinkedListLogger(const LinkedList& list)
 
 std::string LinkedListLogger::toString() const
 {
-    if (!list)
+    if (!list) 
+    {
         return "[ERROR] LinkedListLogger is referencing a null LinkedList.";
+    }
 
     Node* temp = list->getHead();
     if (!temp)
+    {
         return "List is empty.";
+    }
 
     std::string output = "List contents: ";
     while (temp)
