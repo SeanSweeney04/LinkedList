@@ -124,18 +124,18 @@
 [DEBUG] LinkedList destructor called.
 [DEBUG] LinkedList destructor called.
 [INFO] -----------------------------------------
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
 [INFO] =========================================
 [INFO] TEST SUITE ENDED
 [INFO] =========================================
-[DEBUG] LinkedList destructor called.
-[DEBUG] LinkedList destructor called.
-[DEBUG] LinkedList destructor called.
-[DEBUG] LinkedList destructor called.
-[DEBUG] LinkedList destructor called.
-[DEBUG] LinkedList destructor called.
-[DEBUG] LinkedList destructor called.
-[DEBUG] LinkedList destructor called.
-[DEBUG] LinkedList destructor called.
-[DEBUG] LinkedList destructor called.
-[DEBUG] LinkedList destructor called.
-[DEBUG] LinkedList destructor called.

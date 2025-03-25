@@ -113,7 +113,7 @@ void LinkedList::remove(int x)
                 tail = prev;
             }
             delete cur;
-            return;
+            break;
         }
         prev = cur;
         cur = cur->next;

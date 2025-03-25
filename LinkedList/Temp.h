@@ -11,7 +11,7 @@ public:
     Temp(const Temp& other);
     Temp& operator=(const Temp& other);
 
-    std::vector<LinkedList>& getLists();
+    const std::vector<LinkedList>& getLists();
 
 private:
     std::vector<LinkedList> lists;

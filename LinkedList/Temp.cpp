@@ -34,7 +34,7 @@ Temp& Temp::operator=(const Temp& other)
 }
 
 // Getter to allow external iteration
-std::vector<LinkedList>& Temp::getLists()
+ const std::vector<LinkedList>& Temp::getLists()
 {
     return lists;
 }
