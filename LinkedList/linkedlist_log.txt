@@ -2,7 +2,7 @@
 [INFO] TEST SUITE STARTED
 [INFO] =========================================
 [INFO] Test 01: Creating and inserting elements into l1.
-[INFO] LinkedList default constructor called.
+[DEBUG] LinkedList default constructor called.
 [INFO] Original List (l1): List contents: 0 1 2 3 4 
 [INFO] -----------------------------------------
 [INFO] Test 02: Removing elements from l1.
@@ -18,19 +18,19 @@
 [INFO] List contents: 1 3 
 [INFO] -----------------------------------------
 [INFO] Test 04: Copying l1 into l2 (Copy Constructor).
-[INFO] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
 [INFO] List contents: 1 3 
 [INFO] -----------------------------------------
 [INFO] Test 05: Assigning l1 to l3 (Assignment Operator).
-[INFO] LinkedList default constructor called.
-[INFO] LinkedList operator constructor called.
+[DEBUG] LinkedList default constructor called.
+[DEBUG] LinkedList operator constructor called.
 [INFO] List contents: 1 3 
 [INFO] -----------------------------------------
 [INFO] Test 06: Passing LinkedList by VALUE.
-[INFO] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
 [INFO] Inside pass-by-value (should NOT affect original list)
 [INFO] List contents: 1 3 99 
-[INFO] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
 [INFO] Original l1 after pass-by-value:
 [INFO] List contents: 1 3 
 [INFO] -----------------------------------------
@@ -47,52 +47,52 @@
 [INFO] List contents: 1 3 100 101 
 [INFO] -----------------------------------------
 [INFO] Test 09: Passing Temp instance by value and reference
-[INFO] LinkedList default constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList default constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList default constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
+[DEBUG] LinkedList default constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList default constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList default constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
 [DEBUG] Temp copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
 [DEBUG] Temp copy constructor called.
 [DEBUG] Inside passTemp()
 [INFO] Inside passTemp - logging temp_val:
@@ -104,38 +104,38 @@
 [INFO] List contents: 2 
 [INFO] List contents: 3 
 [DEBUG] Leaving passTemp() with a return by value
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList copy constructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
 [DEBUG] Temp copy constructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
 [INFO] -----------------------------------------
 [INFO] =========================================
 [INFO] TEST SUITE ENDED
 [INFO] =========================================
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
-[INFO] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
+[DEBUG] LinkedList destructor called.
