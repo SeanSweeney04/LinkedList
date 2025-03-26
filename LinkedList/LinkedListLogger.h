@@ -1,8 +1,8 @@
 #ifndef LINKEDLISTLOGGER_H
 #define LINKEDLISTLOGGER_H
 
-#include "LinkedList.h"
 #include <iostream>
+#include "LinkedList.h"
 
 class LinkedListLogger
 {

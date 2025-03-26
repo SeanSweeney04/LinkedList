@@ -2,7 +2,6 @@
 #include "Logger.h"
 #include <iostream>
 
-
 LinkedListLogger::LinkedListLogger(const LinkedList& list)
 {
     this->list = &list;  // Store a pointer instead of a reference
